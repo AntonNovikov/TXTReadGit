@@ -1,7 +1,12 @@
-document.querySelector('#inputfile').addEventListener('change',function(){
-    let fr = new FileReader();
-    fr.onload = function(){
-        document.querySelector('#output').textContent = fr.result;
-    }
-    fr.readAsText(this.file[0]);
-})
+document.querySelector("#input").addEventListener("change", openFile);
+function openFile(event) {
+  var input = event.target;
+
+  var reader = new FileReader();
+  reader.onload = function () {
+    var text = reader.result;
+    document.querySelector("#output").textContent = text;
+    console.log(text);
+  };
+  reader.readAsText(input.files[0]);
+}
